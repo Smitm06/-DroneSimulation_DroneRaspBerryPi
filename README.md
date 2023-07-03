@@ -1,1 +1,2 @@
-# DroneRaspberrypi4
+# DroneRaspberryp
+''' sudo apt-get upgrade'''
