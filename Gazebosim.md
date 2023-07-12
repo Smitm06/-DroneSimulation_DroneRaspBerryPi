@@ -126,7 +126,8 @@ Example of basic drone urdf file is below:
    </robot> '
 Next is the launch file below fo it.
 
-'?xml version="1.0" encoding="UTF-8"?>
+'
+?xml version="1.0" encoding="UTF-8"?>
 <launch>
   
   <!-- Load the drone URDF -->
