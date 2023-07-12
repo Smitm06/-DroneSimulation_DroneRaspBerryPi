@@ -126,7 +126,7 @@ Example of basic drone urdf file is below:
    </robot> '
 Next is the launch file below fo it.
 
-'
+'''
 ?xml version="1.0" encoding="UTF-8"?>
 <launch>
   
@@ -138,7 +138,7 @@ Next is the launch file below fo it.
     args="-urdf -param robot_description -model drone1
           -x 0 -y 0 -z 0
           -R 0 -P 0 -Y 0" />
-	  </launch> '
+	  </launch> '''
    
    So this line (-model drone1) is assigning name to this drone that is drone1. Also we can give the coordinates and orientation for where to launch in gazebo envirnment.
    This line (find drone_pose)/urdf/drone.urdf" />) is the location of our urdf file. So in the workspae "my_workspace", in src , there is a package named "drone_pose" where there is a folder of urdf where .urdf file is there. So this launch file is accessing that urdf model and then launching it to gazebo environment .
