@@ -1,0 +1,11 @@
+<launch>
+    <param name="/use_sim_time" value="true"/>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find drone_pkg)/worlds/custom_env.world"/>
+    </include>
+
+    
+
+    <node name="gazebo_visualization" pkg="drone_pkg" type="gazebo_visualization.py" output="screen" /> 
+
+</launch>
