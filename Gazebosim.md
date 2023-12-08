@@ -1,7 +1,10 @@
-Gazebo version - Gazebo11
+**Note:** The below tutorial and codes are a basic framework of how and what we have done in our simulation. Below are the not complete steps performed in our the project . The specifications are Gazebo version - Gazebo11 and ROS Noetic
+    
 
-Aim Of Simulation: The aim is to simulate our real drone in real time in gazebo, that is , what ever our real drone is doing ( roll, pitch, up , down etc) , the simulator will mimic in real time. To acchieve this, we will give position and orientation data from GPS and imu to our gazebo as input in real time and gazebo will publish this to virtual drone. So by this in real time we can mimic the real drone in gazebo. So gazebo will take 6 things in input which are x,y,z and roll,pitch,yaw angles. 
 
+**Aim Of Simulation**: The aim is to simulate our real drone in real time in gazebo, that is , what ever our real drone is doing ( roll, pitch, up , down etc) , the simulator will mimic in real time. To acchieve this, we will give position and orientation data from GPS and imu to our gazebo as input in real time and gazebo will publish this to virtual drone. So by this in real time we can mimic the real drone in gazebo. So gazebo will take 6 things in input which are x,y,z and roll,pitch,yaw angles. 
+
+**Steps**
 First step is to import our model to gazebo environment and next step is to control it to simulate it.
 So to import an model to Gazebo, there required two files, one is urdf file which has details of model structure and other is launch file which launches it to gazebo.
 URDF (Unified Robot Description Format) is an XML-based file format used in the Robot Operating System (ROS) to describe the structure and visual properties of a robot model. It has links , joints , visuals and collisions. 
@@ -385,5 +388,6 @@ if __name__ == '__main__':
 ```
 
   This line(model_state_pub = rospy.Publisher('/gazebo/set_model_state', ModelState, queue_size=1)) is sayinf that thin node is publishing to gazebo 's set_model_state. `quad1.pose.position.x = 5*math.sin(2*time.time())` So here x position of drone1 is varying like sin function with amplitude 5. So it seems like drone 1 is moving but actually its publishing position at the rate of 100. That in 1 second it is publishing msg 100 times. so smooth. 
+  
 
   
