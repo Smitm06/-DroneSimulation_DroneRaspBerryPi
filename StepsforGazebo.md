@@ -2,13 +2,13 @@
     
 
 
-**Aim Of Simulation**: The aim is to simulate our real drone in real time in gazebo, that is , what ever our real drone is doing ( roll, pitch, up , down etc) , the simulator will mimic in real time. To acchieve this, we will give position and orientation data from GPS and imu to our gazebo as input in real time and gazebo will publish this to virtual drone. So by this in real time we can mimic the real drone in gazebo. So gazebo will take 6 things in input which are x,y,z and roll,pitch,yaw angles. 
+**Aim Of Simulation**: The aim is to simulate our real drone in real-time in Gazebo. In other words, whatever our real drone is doing (roll, pitch, up, down, etc.), the simulator will mimic in real time. To achieve this, we will feed position and orientation data from GPS and IMU to Gazebo as input in real time. Gazebo will then publish this information to the virtual drone, allowing us to mimic the real drone's actions in Gazebo. Gazebo will take six inputs, namely x, y, z, and roll, pitch, yaw angles.
 
 **Steps**
-First step is to import our model to gazebo environment and next step is to control it to simulate it.
-So to import an model to Gazebo, there required two files, one is urdf file which has details of model structure and other is launch file which launches it to gazebo.
-URDF (Unified Robot Description Format) is an XML-based file format used in the Robot Operating System (ROS) to describe the structure and visual properties of a robot model. It has links , joints , visuals and collisions. 
-Example of basic drone urdf file is below:
+The first step is to import our model into the Gazebo environment, and the next step is to control it for simulation. To import a model into Gazebo, two files are required: a URDF file, which contains details of the model's structure, and a launch file, which launches it into Gazebo.
+
+URDF (Unified Robot Description Format) is an XML-based file format used in the Robot Operating System (ROS) to describe the structure and visual properties of a robot model. It includes links, joints, visuals, and collisions. An example of a basic drone URDF file is provided below: 
+
 ```
  <?xml version="1.0"?>
    <robot name="drone">
@@ -148,7 +148,7 @@ Example of basic drone urdf file is below:
 
    
    So this line (-model drone1) is assigning name to this drone that is drone1. Also we can give the coordinates and orientation for where to launch in gazebo envirnment.
-   This line (find drone_pose)/urdf/drone.urdf" />) is the location of our urdf file. So in the workspae "my_workspace", in src , there is a package named "drone_pose" where there is a folder of urdf where .urdf file is there. So this launch file is accessing that urdf model and then launching it to gazebo environment .
+   This line (find drone_pose)/urdf/drone.urdf" />) is the location of our urdf file. So in the workspace "my_workspace", in src , there is a package named "drone_pose" where there is a folder of urdf where .urdf file is there. So this launch file is accessing that urdf model and then launching it to gazebo environment .
     Now for its implementation, run `roscore` in one terminal. In other terminal, open empty world gazebo by this command `roslaunch gazebo_ros emptyworld.launch` .Then in next terminal launch our spawn file by the command `roslaunch drone_pose spawn.launch`. But before this command there two thing to be done that is in the terminal `cd my_workspace` run `catkin_make`. Then `source devel/setup.bash` to source the files.
     Also to launch two models simultaneously in gazebo we have to add one more model to our launch file. Below is the launch file for the same:
    ``` <?xml version="1.0" encoding="UTF-8"?>
@@ -312,7 +312,7 @@ By launching it same as previous command, the model is launched in our gazebo en
 
 So till now our drone model is launched in our gazebo.
 Now the second phase begins that is to control it or to move it. So there are two ways we can do it. First is gazebo plugins, and other is gazebo API. 
-So initially while learning gazebo and ros, I controlled two wheeler robot/car by gazebo plugin "differntial_drive_controller".
+So initially while practicing ROS, I controlled two wheeler robot/car by gazebo plugin "differntial_drive_controller".
 ```    
 <gazebo>
     <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
@@ -387,7 +387,7 @@ if __name__ == '__main__':
        rate.sleep()
 ```
 
-  This line(model_state_pub = rospy.Publisher('/gazebo/set_model_state', ModelState, queue_size=1)) is sayinf that thin node is publishing to gazebo 's set_model_state. `quad1.pose.position.x = 5*math.sin(2*time.time())` So here x position of drone1 is varying like sin function with amplitude 5. So it seems like drone 1 is moving but actually its publishing position at the rate of 100. That in 1 second it is publishing msg 100 times. so smooth. 
+  This line(model_state_pub = rospy.Publisher('/gazebo/set_model_state', ModelState, queue_size=1)) means that the node is publishing to gazebo 's set_model_state. `quad1.pose.position.x = 5*math.sin(2*time.time())` So here x position of drone1 is varying like sin function with amplitude 5. So it seems like drone 1 is moving but actually its publishing position at the rate of 100. That in 1 second it is publishing msg 100 times. 
   
 
   
