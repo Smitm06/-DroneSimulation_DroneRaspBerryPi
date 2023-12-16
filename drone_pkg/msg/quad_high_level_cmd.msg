@@ -1,0 +1,9 @@
+float64 x_des
+float64 y_des
+float64 z_des
+float64 x_dot_des
+float64 y_dot_des
+float64 z_dot_des
+float64 ph_des
+float64 th_des
+float64 ps_des

@@ -1,0 +1,33 @@
+<launch>
+<arg name="fcu_url" default="/dev/ttyACM0:57600" />
+	<arg name="gcs_url" default="" />
+	<arg name="tgt_system" default="1" />
+	<arg name="tgt_component" default="1" />
+	<arg name="log_output" default="screen" />
+	<arg name="fcu_protocol" default="v2.0" />
+	<arg name="respawn_mavros" default="false" />
+
+	<include file="$(find mavros)/launch/node.launch">
+		<arg name="pluginlists_yaml" value="$(find mavros)/launch/px4_pluginlists.yaml" />
+		<arg name="config_yaml" value="$(find mavros)/launch/px4_config.yaml" />
+
+		<arg name="fcu_url" value="$(arg fcu_url)" />
+		<arg name="gcs_url" value="$(arg gcs_url)" />
+		<arg name="tgt_system" value="$(arg tgt_system)" />
+		<arg name="tgt_component" value="$(arg tgt_component)" />
+		<arg name="log_output" value="$(arg log_output)" />
+		<arg name="fcu_protocol" value="$(arg fcu_protocol)" />
+		<arg name="respawn_mavros" default="$(arg respawn_mavros)" />
+	</include>
+
+    <node name="offb_node_py" pkg="drone_pkg" type="main_position_mode_auto.py" output="screen" />
+	<!-- <node name="offb_node_py" pkg="drone_pkg" type="main_position_mode_takeoff_land.py" output="screen" />
+	<node name="offb_node_py" pkg="drone_pkg" type="main_position_mode_boxmap.py" output="screen" />
+	<node name="offb_node_py" pkg="drone_pkg" type="main_attitude_mode.py" output="screen" />
+	<node name="offb_node_py" pkg="drone_pkg" type="main_velocity_mode.py" output="screen" /> -->
+	<node name="mavcmd" pkg="drone_pkg" type="inc_freq_imu.py" output="screen" />
+    <node name="get_imu" pkg="drone_pkg" type="get_quad_states.py" output="screen" />
+    <node name="get_rc" pkg="drone_pkg" type="get_human_inputs.py" output="screen" />
+	<node name="get_cam" pkg="drone_pkg" type="get_cable_state.py" output="screen" /> 
+    <!-- Add more nodes for additional scripts -->
+</launch>

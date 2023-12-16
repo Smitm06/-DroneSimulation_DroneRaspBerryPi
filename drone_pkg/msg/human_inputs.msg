@@ -1,0 +1,10 @@
+int16 channel1
+int16 channel2
+int16 channel3
+int16 channel4
+int16 channel5
+int16 channel6
+int16 channel7
+int16 channel8
+int16 channel9
+int16 channel10

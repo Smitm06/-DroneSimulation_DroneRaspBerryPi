@@ -1,0 +1,15 @@
+float64 quad_x 
+float64 quad_y
+float64 quad_z
+float64 quad_ph
+float64 quad_th
+float64 quad_ps
+float64 quad_x_dot
+float64 quad_y_dot
+float64 quad_z_dot
+float64 quad_ph_dot
+float64 quad_th_dot
+float64 quad_ps_dot
+float64 quad_x_dot_dot
+float64 quad_y_dot_dot
+float64 quad_z_dot_dot
